@@ -1,4 +1,3 @@
-// src/BackgroundMusic.js
 import { useEffect, useRef } from "react";
 
 function BackgroundMusic() {
@@ -8,29 +7,32 @@ function BackgroundMusic() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Bắt đầu phát ở chế độ muted
+    audio.muted = true;
+    audio.volume = 0;
     audio.play().then(() => {
-      // Bật tiếng từ từ
+      // Sau 1 giây, dần bật tiếng
       setTimeout(() => {
-        let vol = 0;
         audio.muted = false;
-        const fadeIn = setInterval(() => {
-          if (vol < 1) {
-            vol += 0.05;
-            audio.volume = vol;
+        let volume = 0;
+        const fade = setInterval(() => {
+          if (volume < 1) {
+            volume += 0.05;
+            audio.volume = volume;
           } else {
-            clearInterval(fadeIn);
+            clearInterval(fade);
           }
         }, 200);
       }, 1000);
-    }).catch(err => {
-      console.warn("Autoplay bị chặn:", err);
+    }).catch((err) => {
+      console.warn("⚠️ Autoplay bị chặn:", err);
     });
   }, []);
 
   return (
     <audio
       ref={audioRef}
-      src="/hengapemduoianhtrang.mp3" // <--- URL nhạc của sếp
+      src="/hengapemduoianhtrang.mp3"
       autoPlay
       loop
       muted
