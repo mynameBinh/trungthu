@@ -1,0 +1,910 @@
+/* Reset và base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  /* Mobile optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Container chính */
+.mid-autumn-container {
+  position: relative;
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 40% 40%, rgba(255, 107, 107, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 60% 70%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+  overflow: hidden;
+  /* Performance optimizations */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Particles container */
+#tsparticles {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Main content */
+.main-content {
+  position: relative;
+  z-index: 10;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #FFD700;
+  text-shadow: 
+    0 0 10px #FFD700,
+    0 0 20px #FFA500,
+    0 0 30px #FF6B6B;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #FFA500;
+  text-shadow: 0 0 10px #FFA500;
+  font-style: italic;
+}
+
+/* Đèn lồng */
+.lantern {
+  width: 60px;
+  height: 80px;
+}
+
+.lantern-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #FF6B6B, #FFD700);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  box-shadow: 
+    0 0 20px #FFD700,
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: lanternGlow 2s ease-in-out infinite alternate;
+}
+
+.lantern-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #FFF 0%, #FFD700 50%, transparent 70%);
+  border-radius: 50%;
+  animation: lanternFlicker 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes lanternGlow {
+  0% { box-shadow: 0 0 20px #FFD700, inset 0 0 20px rgba(255, 255, 255, 0.3); }
+  100% { box-shadow: 0 0 40px #FFA500, inset 0 0 30px rgba(255, 255, 255, 0.5); }
+}
+
+@keyframes lanternFlicker {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.lantern-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: lanternGlowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes lanternGlowPulse {
+  0% { 
+    opacity: 0.5; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% { 
+    opacity: 0.8; 
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+/* Bánh trung thu */
+.moon-cakes-container {
+  display: flex;
+  gap: 2rem;
+  margin: 3rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.moon-cake {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+}
+
+.cake-top {
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.cake-body {
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(45deg, #D2691E, #CD853F);
+  border-radius: 0 0 50% 50%;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 
+    0 0 25px rgba(255, 215, 0, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.cake-pattern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: cakeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes cakeGlow {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.cake-pattern.touched {
+  animation: cakeTouch 0.3s ease-out;
+}
+
+@keyframes cakeTouch {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.3); }
+  100% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.cake-shine {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+  animation: cakeShine 3s ease-in-out infinite;
+}
+
+@keyframes cakeShine {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 0.6; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.3; }
+}
+
+.cake-flavor-indicator {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  animation: flavorIndicatorGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes flavorIndicatorGlow {
+  0% { 
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    transform: scale(1);
+  }
+  100% { 
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    transform: scale(1.1);
+  }
+}
+
+/* Moon cake variations */
+.moon-cake[style*="width: 80px"] {
+  animation: floatFast 2s ease-in-out infinite;
+}
+
+.moon-cake[style*="width: 150px"] {
+  animation: floatSlow 3s ease-in-out infinite;
+}
+
+.moon-cake[style*="width: 120px"] {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* Mặt trăng */
+.moon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  z-index: 5;
+}
+
+.moon-surface {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #F5F5DC, #FFE4B5);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 
+    0 0 50px #FFD700,
+    0 0 100px rgba(255, 215, 0, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.moon-crater {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.moon-crater:nth-child(1) {
+  width: 30px;
+  height: 30px;
+  top: 20%;
+  left: 30%;
+}
+
+.moon-crater.small {
+  width: 15px;
+  height: 15px;
+  top: 60%;
+  right: 25%;
+}
+
+.moon-crater.tiny {
+  width: 8px;
+  height: 8px;
+  top: 40%;
+  left: 60%;
+}
+
+.moon-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: moonGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  0% { 
+    opacity: 0.3; 
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 0.6; 
+    transform: scale(1.1);
+  }
+}
+
+/* Sao lấp lánh */
+.star {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px currentColor);
+  animation: starTwinkle 2s ease-in-out infinite alternate;
+}
+
+.star.large {
+  font-size: 3rem;
+}
+
+.star.medium {
+  font-size: 2.5rem;
+}
+
+.star.small {
+  font-size: 1.5rem;
+}
+
+@keyframes starTwinkle {
+  0% { 
+    opacity: 0.6; 
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(0.6) rotate(90deg);
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(180deg);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+}
+
+/* Button chúc mừng */
+.celebration-btn {
+  background: linear-gradient(45deg, #FF6B6B, #FFD700, #4ECDC4, #9B59B6);
+  background-size: 300% 300%;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 2rem 0;
+  box-shadow: 
+    0 0 40px rgba(255, 215, 0, 0.6),
+    inset 0 0 25px rgba(255, 255, 255, 0.3),
+    0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: buttonGlow 3s ease-in-out infinite alternate;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.celebration-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 50px rgba(255, 215, 0, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes buttonGlow {
+  0% { 
+    background-position: 0% 50%;
+    box-shadow: 
+      0 0 40px rgba(255, 215, 0, 0.6),
+      inset 0 0 25px rgba(255, 255, 255, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  50% { 
+    background-position: 50% 0%;
+    box-shadow: 
+      0 0 50px rgba(255, 107, 107, 0.7),
+      inset 0 0 30px rgba(255, 255, 255, 0.4),
+      0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+  100% { 
+    background-position: 100% 50%;
+    box-shadow: 
+      0 0 60px rgba(78, 205, 196, 0.8),
+      inset 0 0 35px rgba(255, 255, 255, 0.5),
+      0 15px 35px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Bài thơ */
+.poem {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.15));
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 0 40px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.poem::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: poemShine 4s ease-in-out infinite;
+}
+
+@keyframes poemShine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.poem p {
+  font-size: 1.3rem;
+  color: #FFD700;
+  margin: 0.8rem 0;
+  text-shadow: 
+    0 0 10px #FFD700,
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 30px rgba(255, 165, 0, 0.4);
+  font-style: italic;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  animation: poemGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes poemGlow {
+  0% { 
+    text-shadow: 
+      0 0 10px #FFD700,
+      0 0 20px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 165, 0, 0.4);
+  }
+  100% { 
+    text-shadow: 
+      0 0 15px #FFD700,
+      0 0 25px rgba(255, 215, 0, 0.8),
+      0 0 35px rgba(255, 165, 0, 0.6);
+  }
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 3rem;
+  }
+  
+  .moon {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .moon-cake {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .lantern {
+    width: 50px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+  
+  .moon {
+    width: 100px;
+    height: 100px;
+    top: 5%;
+    right: 5%;
+  }
+  
+  .moon-cake {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .lantern {
+    width: 40px;
+    height: 60px;
+  }
+  
+  .main-content {
+    padding: 1rem;
+    min-height: 100vh;
+  }
+  
+  .moon-cakes-container {
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .celebration-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .poem {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .poem p {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+  }
+  
+  /* Lời chúc mobile */
+  .wish-container {
+    padding: 1.5rem 2rem;
+    margin: 0 1rem;
+  }
+  
+  .wish-text {
+    font-size: 1.2rem;
+  }
+  
+  .wish-star {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+    padding: 0 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .moon {
+    width: 80px;
+    height: 80px;
+    top: 3%;
+    right: 3%;
+  }
+  
+  .moon-cake {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .lantern {
+    width: 35px;
+    height: 55px;
+  }
+  
+  .main-content {
+    padding: 0.5rem;
+  }
+  
+  .moon-cakes-container {
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .celebration-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .poem {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .poem p {
+    font-size: 1rem;
+    margin: 0.2rem 0;
+  }
+  
+  /* Touch-friendly interactions */
+  .celebration-btn {
+    min-height: 44px; /* iOS touch target minimum */
+    min-width: 44px;
+  }
+  
+  .moon-cake {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .main-content {
+    padding: 0.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .moon-cakes-container {
+    margin: 1rem 0;
+  }
+  
+  .poem {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .lantern-body,
+  .moon-surface,
+  .cake-pattern {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Hiệu ứng scroll và parallax */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-25px) translateZ(10px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-15px) translateZ(5px); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-35px) translateZ(15px); }
+}
+
+/* Thêm hiệu ứng cho các elements */
+.lantern-body {
+  animation: float 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.moon-surface {
+  animation: floatSlow 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.moon-cake {
+  animation: floatFast 2.5s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* Parallax layers */
+.lantern:nth-child(1) { z-index: 2; }
+.lantern:nth-child(2) { z-index: 3; }
+.lantern:nth-child(3) { z-index: 1; }
+.lantern:nth-child(4) { z-index: 2; }
+
+.star:nth-child(odd) { z-index: 1; }
+.star:nth-child(even) { z-index: 2; }
+
+/* Loading Screen Styles */
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.loading-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.loading-gradient {
+  width: 100%;
+  height: 100%;
+}
+
+.loading-moon {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  font-size: 4rem;
+  filter: drop-shadow(0 0 30px #FFD700);
+  z-index: 2;
+}
+
+.loading-percentage {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFD700;
+  z-index: 3;
+}
+
+.loading-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.loading-particle {
+  position: absolute;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 10px currentColor);
+  z-index: 1;
+}
+
+.loading-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.loading-text {
+  font-weight: bold;
+  text-shadow: 
+    0 0 20px currentColor,
+    0 0 40px currentColor,
+    0 0 60px currentColor;
+  filter: drop-shadow(0 0 15px currentColor);
+}
+
+.loading-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700, #FFA500, #FF6B6B, #4ECDC4);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  z-index: 3;
+}
+
+/* Mobile optimizations for loading */
+@media (max-width: 768px) {
+  .loading-text-container {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .loading-text {
+    font-size: 2rem !important;
+  }
+  
+  .loading-particle {
+    font-size: 1.2rem;
+  }
+  
+  .loading-moon {
+    font-size: 3rem;
+    top: 10%;
+    right: 10%;
+  }
+  
+  .loading-percentage {
+    font-size: 1rem;
+    bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-text-container {
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .loading-text {
+    font-size: 1.5rem !important;
+  }
+  
+  .loading-particle {
+    font-size: 1rem;
+  }
+  
+  .loading-moon {
+    font-size: 2.5rem;
+    top: 8%;
+    right: 8%;
+  }
+  
+  .loading-percentage {
+    font-size: 0.9rem;
+    bottom: 10px;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  .lantern-body,
+  .moon-surface,
+  .cake-pattern {
+    animation-duration: 4s; /* Slower animations */
+  }
+  
+  /* Optimize particles performance */
+  #tsparticles {
+    opacity: 0.7; /* Slightly transparent for better performance */
+  }
+  
+  /* Touch-friendly button */
+  .celebration-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Prevent zoom on double tap */
+  .main-content {
+    touch-action: pan-x pan-y;
+  }
+}
