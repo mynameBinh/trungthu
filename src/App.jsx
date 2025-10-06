@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Confetti from 'react-confetti'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
+import BackgroundMusic from './BackgroundMusic'
 import './App.css'
+
 
 // Component Loading Screen
 function LoadingScreen({ onComplete }) {
@@ -641,7 +643,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 3 }}
               >
-                🌸❤️ Bấm vào anh điii ❤️🌸
+                ❤️ Bấm vào anh điii ❤️
               </motion.button>
 
               {/* Traditional Poem */}
@@ -703,6 +705,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      <BackgroundMusic />
     </div>
   )
 }
