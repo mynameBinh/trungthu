@@ -30,7 +30,7 @@ function BackgroundMusic() {
   return (
     <audio
       ref={audioRef}
-      src="\src\hengapemduoianhtrang.mp3" // <--- URL nhạc của sếp
+      src="/hengapemduoianhtrang.mp3" // <--- URL nhạc của sếp
       autoPlay
       loop
       muted
