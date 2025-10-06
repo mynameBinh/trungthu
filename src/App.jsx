@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Confetti from 'react-confetti'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
-import { playMusic } from './BackgroundMusic'
 import './App.css'
 
 
@@ -411,9 +410,6 @@ function App() {
   const [showPoem, setShowPoem] = useState(false)
   const [particlesInit, setParticlesInit] = useState(null)
 
-  useEffect(() => {
-    playMusic();
-  }, []);
 
   useEffect(() => {
     const initParticles = async () => {
