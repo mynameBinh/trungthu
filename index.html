@@ -8,22 +8,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-
-    <audio id="bg-music" src="/hengapemduoianhtrang.mp3" autoplay loop muted></audio>
-    <script>
-      window.onload = () => {
-        const audio = document.getElementById("bg-music");
-        setTimeout(() => {
-          let vol = 0;
-          const fade = setInterval(() => {
-            vol += 0.05;
-            if (vol >= 1) clearInterval(fade);
-            audio.volume = Math.min(vol, 1);
-          }, 200);
-          audio.muted = false;
-        }, 1500);
-      };
-    </script>
     
   </body>
 </html>
